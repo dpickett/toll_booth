@@ -26,12 +26,29 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-begin
+namespace :rcov do
   require 'rcov/rcovtask'
-  Rcov::RcovTask.new do |test|
+  Rcov::RcovTask.new(:tests) do |test|
     test.libs << 'test'
     test.pattern = 'test/**/*_test.rb'
+    test.rcov_opts = %w{--aggregate coverage.data --exclude osx\/objc,gems\/,spec\/}
     test.verbose = true
+  end  
+  
+  require 'cucumber/rake/task'  
+  Cucumber::Rake::Task.new(:cucumber) do |t|    
+    t.rcov = true
+    t.rcov_opts = %w{--aggregate coverage.data --exclude osx\/objc,gems\/,features\/,spec\/ -o "features_rcov"}
+  end
+end
+
+begin
+  require 'rcov/rcovtask'
+  desc "Run both specs and features to generate aggregated coverage"
+  task :rcov do |t|
+    rm "coverage.data" if File.exist?("coverage.data")
+    Rake::Task["rcov:cucumber"].invoke
+    Rake::Task["rcov:tests"].invoke
   end
 rescue LoadError
   task :rcov do

@@ -20,8 +20,3 @@ Then /^I should get "([^\"]*)" routing error$/ do |error_qty|
   assert_equal error_qty.to_i, @routes.errors.size
 end
 
-Then /^the first routing error should read "([^\"]*)"$/ do |error_message|
-  assert !@routes.errors[0].nil?
-  assert_match /#{Regexp.escape(error_message)}/i, @routes.errors[0]
-end
-

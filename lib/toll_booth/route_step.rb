@@ -1,12 +1,23 @@
 module TollBooth
+  #a direction to take for a given route
+  #direction steps have the following attributes
+  # * distance (in miles)
+  # * travel_time (in seconds)
+  # * latitude
+  # * longitude
+  # * html_description
+  # * description (html stripped)
   class RouteStep
     attr_accessor :distance, :travel_time, :latitude, :longitude, :html_description
 
+    # strips any html from the html_description_attribute
+    # @return [String]
     def description
       @html_description.gsub(/<\/?[^>]*>/, "")
     end
 
     class << self
+      # parses the step from the json supplied
       def parse(json)
         route_steps = []
         json.each do |s|
