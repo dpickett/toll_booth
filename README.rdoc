@@ -14,9 +14,9 @@
     end
 
 == Links of Interest
- * {Issue Tracker}[http://github.com/dpickett/toll_booth/issues]
- * {RDoc}[http://rdoc.info/projects/dpickett/toll_booth]
- * {WWR Profile (please recommend me if you find this software useful)}[http://workingwithrails.com/person/8076-dan-pickett]
+* {Issue Tracker}[http://github.com/dpickett/toll_booth/issues]
+* {RDoc}[http://rdoc.info/projects/dpickett/toll_booth]
+* {WWR Profile (please recommend me if you find this software useful)}[http://workingwithrails.com/person/8076-dan-pickett]
 
 == TODO
 * Allow Configuration for Key
