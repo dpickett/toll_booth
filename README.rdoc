@@ -1,15 +1,27 @@
 = toll_booth
 
-@origin = TollBooth::Location.new("4 Yawkey Way, Boston, MA")
-@destination = TollBooth::Location.new("River Avenue & E 161, Bronx, NY 10451")
+  @origin = TollBooth::Location.new("4 Yawkey Way, Boston, MA")
+  @destination = TollBooth::Location.new("River Avenue & E 161, Bronx, NY 10451")
 
-@routes = @origin.drive_to(@destination)
-@routes[0].distance
-@routes[0].drive_time
-@routes[0].summary
-@routes[0].steps
-@routes[0].steps[0].distance
-@routes[0].steps[0].summary
+  @routes = @origin.drive_to(@destination)
+  if @routes.found?
+    @routes[0].distance
+    @routes[0].drive_time
+    @routes[0].summary
+    @routes[0].steps
+    @routes[0].steps[0].distance
+    @routes[0].steps[0].summary
+  end
+
+  @bad_routes = @origin.drive_to(TollBooth::Location.new("foo))
+  if !@bad_routes.found?
+    puts "Found"
+  else
+    puts @bad_routes.errors.join(", ")
+  end
+
+== TODO
+ * Allow Configuration for Key
 
 == Note on Patches/Pull Requests
  

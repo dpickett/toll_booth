@@ -1,9 +1,15 @@
 module TollBooth
   class Location
-  
-    attr_acessor :address_description
+    attr_accessor :description
+
     def initialize(description)
-      @address_description = description
+      @description = description
+    end
+
+    def drive_to(destinations)
+      destinations = [destinations] if !destinations.is_a?(Array)
+
+      TollBooth::Route.find(self, destinations)
     end
   end
 end

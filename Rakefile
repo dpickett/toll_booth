@@ -11,6 +11,7 @@ begin
     gem.homepage = "http://github.com/dpickett/toll_booth"
     gem.authors = ["Dan Pickett"]
     gem.add_dependency("jnunemaker-httparty", ">= 0.4.4")  
+    gem.add_dependency("hpoydar-chronic_duration", ">= 0.7.4")
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 
