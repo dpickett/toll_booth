@@ -5,9 +5,12 @@ module TollBooth
   class RouteCollection < Array
     attr_accessor :errors
     def initialize(size = 0, obj = nil)
+      super
       @errors = [] 
     end
 
+    # where routes found?
+    # @return [Boolean] whether routes were found or not
     def found?
       empty?
     end
