@@ -10,8 +10,8 @@ begin
     gem.email = "dpickett@enlightsolutions.com"
     gem.homepage = "http://github.com/dpickett/toll_booth"
     gem.authors = ["Dan Pickett"]
-    gem.add_dependency("jnunemaker-httparty", ">= 0.4.4")  
-    gem.add_dependency("hpoydar-chronic_duration", ">= 0.7.4")
+    gem.add_dependency("httparty", ">= 0.4.5")  
+    gem.add_dependency("chronic_duration", ">= 0.7.5")
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 
@@ -58,7 +58,7 @@ end
 
 begin
   require 'cucumber/rake/task'
-  Cucumber::Rake::Task.new(:features)
+  Cucumber::Rake::Task.new(:cucumber)
 rescue LoadError
   task :features do
     abort "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"
